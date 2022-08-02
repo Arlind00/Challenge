@@ -6,12 +6,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured .*;                  // to be able to import static methods
-import static org.junit.jupiter.api.Assertions .*;            // to be able to import static methods
+import static io.restassured.RestAssured.*;                  // to be able to import static methods
+import static org.junit.jupiter.api.Assertions.*;            // to be able to import static methods
 
 import static io.restassured.RestAssured.baseURI;
-
-
 
 
 public class SpartanTestWithParameters {
@@ -32,14 +30,15 @@ public class SpartanTestWithParameters {
          And response content-type: application/json
          And "Blythe" should be in response payload
       */
+
     @DisplayName("GET request to api/spartans/{ID with ID 5")
     @Test
     public void test1() {
 
         Response response = given().accept(ContentType.JSON)                                    // content type
-                                    .and().pathParam("id",5)        // path parameter
-                                    .when()
-                                    .get("/api/spartans/{id}");                           // end URL, we can give ID value directly also
+                .and().pathParam("id", 5)        // path parameter
+                .when()
+                .get("/api/spartans/{id}");                           // end URL, we can give ID value directly also
 
 
         // verify response
@@ -49,13 +48,41 @@ public class SpartanTestWithParameters {
         assertEquals("application/json", response.contentType());
 
         // verify content
-        assertEquals( response.body().asString().contains("Blythe"), true);         // we can use this
+        assertEquals(response.body().asString().contains("Blythe"), true);         // we can use this
         assertTrue(response.body().asString().contains("Blythe"));                         // we can use this
-
-
     }
 
 
+/*
+        TASK
+        Given accept type is Json
+        And Id parameter value is 500
+        When user sends GET request to /api/spartans/{id}
+        Then response status code should be 404
+        And response content-type: application/json
+        And "Not Found" message should be in response payload
+     */
+
+    @DisplayName("GET request to /api/spartans/{id} with ID 500")
+    @Test
+    public void test2() {
+
+        Response response = given().accept(ContentType.JSON)
+                .and().pathParam("id", 500)
+                .when()
+                .get("/api/spartans/{id}");
+
+
+        // verify status code
+        assertEquals(404, response.statusCode());
+
+        // verify content- type
+        assertTrue(response.contentType().contains("application/json"));
+
+        // verify "Not Found" message on payload
+        assertTrue(response.);
+
+    }
 
 
 }
