@@ -30,7 +30,7 @@ public class ORDSApiTestsWithParameters {
         And Payload should contain "United States of America"
      */
 
-    @DisplayName("GET request to /countires with Query Param ")
+    @DisplayName("GET request to /countries with Query Param ")
     @Test
     public void test1(){
         Response response = given().accept(ContentType.JSON)
@@ -45,11 +45,12 @@ public class ORDSApiTestsWithParameters {
         assertTrue(response.body().asString().contains("United States of America"));
 
         response.prettyPrint();
-
-
-
-
     }
+
+
+
+
+
 
 
 }
