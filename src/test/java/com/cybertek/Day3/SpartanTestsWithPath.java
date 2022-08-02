@@ -2,6 +2,8 @@ package com.cybertek.Day3;
 
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;                  // to be able to import static methods
 import static org.junit.jupiter.api.Assertions.*;            // to be able to import static methods
@@ -17,12 +19,10 @@ public class SpartanTestsWithPath {
     }
 
 
-
-
-
-
-
-
+    @DisplayName("GET one spartan with Path Method")
+    @Test
+    public void test1() {
 
 
     }
+}
