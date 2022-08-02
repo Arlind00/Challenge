@@ -3,6 +3,7 @@ package com.cybertek.Day2;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,29 +40,26 @@ public class HrGetRequests {
         and response body contains  =Americas
      */
 
-    @DisplayName("Get request to /regions2")
+    @DisplayName("Get request to /regions/2")
     @Test
     public void test2() {
 
         Response response = RestAssured.given().accept(ContentType.JSON)
-                .get("/regions2");                                  // endpoint
+                .get("/regions/2");                                  // endpoint
 
         // verify response code is 200
-        System.out.println("response.statusCode() = " + response.statusCode());
+        Assertions.assertEquals(200, response.statusCode());
 
         // verify content type is application/jason
-        System.out.println("response.header(\"application/json\") = " + response.header("application/json"));
+        Assertions.assertEquals("application/json", response.contentType());
 
-        // verify body contains =Americas
+        // verify body contains Americas
+        response.prettyPrint();
 
+        Assertions.assertEquals(response.body().asString().contains("Americas"), true);
 
 
     }
-
-
-
-
-
 
 
 }
