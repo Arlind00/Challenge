@@ -105,7 +105,7 @@ public class SpartanGetRequests {
         Assertions.assertTrue(response.headers().hasHeaderWithName("Date"));
 
         // we select one specific header from that we want to check
-        System.out.println("response.header(\"Content-Length\") = " + response.header("Content-Length"));
+        System.out.println("response.header(\"Content-Length\") = " + response.header("Content-Length"));       // header returns only string
         System.out.println("response.header(\"Date\") =: " + response.header("Date"));
 
 
