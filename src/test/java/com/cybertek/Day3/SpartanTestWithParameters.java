@@ -80,7 +80,7 @@ public class SpartanTestWithParameters {
         assertTrue(response.contentType().contains("application/json"));
 
         // verify "Not Found" message on payload
-        assertTrue(response.);
+        assertTrue(response.body().asString().contains("Not Found"));
 
     }
 
