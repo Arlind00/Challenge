@@ -47,8 +47,6 @@ public class HrGetRequests {
     @Test
     public void test2() {
 
-
-
         Response response = given().accept(ContentType.JSON)               // import static method
                 .get("/regions/2");                                  // endpoint
 
@@ -59,13 +57,13 @@ public class HrGetRequests {
         // verify content type is application/jason
         assertEquals("application/json", response.contentType());
 
-        // verify body contains Americas
         response.prettyPrint();
 
+        // verify body contains Americas
         assertEquals(response.body().asString().contains("Americas"), true);         // boolean
-
-
     }
+
+
 
 
 }
