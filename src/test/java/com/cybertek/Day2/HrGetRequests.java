@@ -53,7 +53,8 @@ public class HrGetRequests {
         System.out.println("response.header(\"application/json\") = " + response.header("application/json"));
 
         // verify body contains =Americas
-        System.out.println("response.body().toString().contains(\"=Americas\") = " + response.body().toString().contains("=Americas"));
+
+
 
     }
 
