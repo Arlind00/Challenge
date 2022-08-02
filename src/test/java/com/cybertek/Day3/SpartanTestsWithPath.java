@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.*;                  // to be able to import static methods
 import static org.junit.jupiter.api.Assertions.*;            // to be able to import static methods
 
@@ -73,4 +75,34 @@ public class SpartanTestsWithPath {
     }
 
 
+    @DisplayName("GET all spartans and navigate with Path()")
+    @Test
+    public void test2() {
+
+        Response response = given().accept(ContentType.JSON)
+                .when().get("/api/spartans");
+
+        //response.prettyPrint();
+
+        int firstID = response.path("id[1]");
+        System.out.println("firstID = " + firstID);
+
+        String name = response.path("name[1]");
+        System.out.println("name = " + name);
+
+        String lastFirstName = response.path("name[-2]");
+        System.out.println("lastFirstName = " + lastFirstName);
+
+        List<String> names = response.path("name");                 // store list of names in List of string
+
+        System.out.println("names = " + names);
+
+
+
+        for (String n : names) {
+            System.out.println( n );
+        }
+
+
+    }
 }

@@ -22,7 +22,7 @@ public class ORDSApiTestsWithParameters {
 
 
     /*
-        Given accept type is Json
+        Given ACCEPT type is Json
         And parameters: q = {\"region_id\":2}
         When users sends a GET request to "/countries"
         Then status code is 200
@@ -32,9 +32,9 @@ public class ORDSApiTestsWithParameters {
 
     @DisplayName("GET request to /countries with Query Param ")
     @Test
-    public void test1(){
+    public void test1() {
         Response response = given().accept(ContentType.JSON)
-                .and().queryParam("q","{\"region_id\":2}")
+                .and().queryParam("q", "{\"region_id\":2}")
                 .log().all()
                 .when()
                 .get("/countries");
@@ -55,11 +55,11 @@ public class ORDSApiTestsWithParameters {
 
     @DisplayName("GET request to employees with Query IT_PROG")
     @Test
-    public void test2(){
+    public void test2() {
 
         Response response = given().accept(ContentType.JSON)
                 .log().all()
-                .and().queryParam("q","{\"job_id\": \"IT_PROG\"}")
+                .and().queryParam("q", "{\"job_id\": \"IT_PROG\"}")
                 .when().get("/employees");
 
 
@@ -69,11 +69,9 @@ public class ORDSApiTestsWithParameters {
 
         response.prettyPrint();
     }
-
-
-
-
-
-
-
 }
+
+
+
+
+
