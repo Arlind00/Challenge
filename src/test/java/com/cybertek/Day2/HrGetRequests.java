@@ -10,13 +10,16 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.image.RescaleOp;
 
+import static io.restassured.RestAssured.*;                  // to be able to import static methods
+import static org.junit.jupiter.api.Assertions.*;            // to be able to import static methods
+
 public class HrGetRequests {
 
 
     // is executed for entire class not just before each scenario as Hooks did, saves baseURL inside this variable
     @BeforeAll
     public static void init() {
-        RestAssured.baseURI = "http://52.91.45.47:1000/ords/hr";                        // base URL
+         baseURI = "http://52.91.45.47:1000/ords/hr";                        // base URL
     }
 
 
@@ -44,19 +47,22 @@ public class HrGetRequests {
     @Test
     public void test2() {
 
-        Response response = RestAssured.given().accept(ContentType.JSON)
+
+
+        Response response = given().accept(ContentType.JSON)               // import static method
                 .get("/regions/2");                                  // endpoint
 
         // verify response code is 200
-        Assertions.assertEquals(200, response.statusCode());
+
+        assertEquals(200, response.statusCode());
 
         // verify content type is application/jason
-        Assertions.assertEquals("application/json", response.contentType());
+        assertEquals("application/json", response.contentType());
 
         // verify body contains Americas
         response.prettyPrint();
 
-        Assertions.assertEquals(response.body().asString().contains("Americas"), true);
+        assertEquals(response.body().asString().contains("Americas"), true);         // boolean
 
 
     }
