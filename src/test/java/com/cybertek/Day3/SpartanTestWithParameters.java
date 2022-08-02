@@ -6,6 +6,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.*;                  // to be able to import static methods
 import static org.junit.jupiter.api.Assertions.*;            // to be able to import static methods
 
@@ -30,7 +33,6 @@ public class SpartanTestWithParameters {
          And response content-type: application/json
          And "Blythe" should be in response payload
       */
-
     @DisplayName("GET request to api/spartans/{ID with ID 5")
     @Test
     public void test1() {
@@ -54,8 +56,7 @@ public class SpartanTestWithParameters {
 
 
 
-
-/*
+    /*
         TASK
         Given accept type is Json
         And ID parameter value is 500
@@ -64,7 +65,6 @@ public class SpartanTestWithParameters {
         And response content-type: application/json
         And "Not Found" message should be in response payload
      */
-
     @DisplayName("GET request to /api/spartans/{id} with ID 500")
     @Test
     public void test2() {
@@ -87,7 +87,7 @@ public class SpartanTestWithParameters {
 
 
 
-         /*
+    /*
         Given ACCEPT type is Json
         And query parameter values are: gender|Female
                                         nameContains|e
@@ -97,7 +97,6 @@ public class SpartanTestWithParameters {
         And "Female" should be in response payload
         And "Janette" should be in response payload
      */
-
     @DisplayName("GET request to /api/spartans/search with Query Params")
     @Test
     public void test3(){
@@ -125,10 +124,66 @@ public class SpartanTestWithParameters {
 
 
 
+    @DisplayName("GET request to /api/spartans/search with Query Params (MAP)")         // alternative way
+    @Test
+    public void test4(){
 
 
+        Map<String,Object> queryMap = new HashMap<>();
+        queryMap.put("nameContains","e");
+        queryMap.put("gender","Female");
+
+        Response response = given().log().all()                             // optional to se our request info
+                .accept(ContentType.JSON)
+                .and().queryParams(queryMap)                                // search for gender= female
+                .when()
+                .get("/api/spartans/search");
 
 
+        // verify response
+        assertEquals(200, response.statusCode());
+
+        // verify content type
+        assertEquals("application/json", response.contentType());
+
+        // verify "Female" should be in response payload
+        assertTrue(response.body().asString().contains("Female"));
+
+        // verify "Janette" should be in response payload
+        assertTrue(response.body().asString().contains("Janette"));
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
