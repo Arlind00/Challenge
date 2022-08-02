@@ -68,16 +68,12 @@ public class ORDSApiTestsWithParameters {
         assertTrue(response.body().asString().contains("IT_PROG"));
 
         response.prettyPrint();
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
 }
