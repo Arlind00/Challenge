@@ -48,7 +48,6 @@ public class SpartanGetRequests {
 
 
 
-
      /*
         Given accept header is application/json
         When users sends a get request to /api/spartans/3
@@ -70,7 +69,7 @@ public class SpartanGetRequests {
         Assertions.assertEquals(200, response.statusCode());
 
         // verify response content
-        Assertions.assertEquals(response.contentType(), "application/json");        // compare actual result with expected result
+        Assertions.assertEquals("application/json", response.contentType());        // compare actual result with expected result
 
         // verify json body contains Fidole
         Assertions.assertTrue(response.body().asString().contains("Fidole"));              // converts result at response into string and checks if it contains
@@ -99,7 +98,7 @@ public class SpartanGetRequests {
         Assertions.assertEquals(200, response.statusCode());
 
         // verify response content type
-        Assertions.assertEquals("text/plain;charset=UTF-8",response.contentType() );
+        Assertions.assertEquals("text/plain;charset=UTF-8", response.contentType() );
 
         // verify we have headers named date
         Assertions.assertTrue(response.headers().hasHeaderWithName("Date"));
@@ -110,7 +109,7 @@ public class SpartanGetRequests {
 
 
         // verify content length is equal 17
-        Assertions.assertEquals("17",response.header("Content-Length"));
+        Assertions.assertEquals("17", response.header("Content-Length"));
 
         // verify body is “Hello from Sparta"
         Assertions.assertEquals( "Hello from Sparta", response.body().asString());

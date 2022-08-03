@@ -1,6 +1,7 @@
 package com.cybertek.Day3;
 
 
+import com.cybertek.Utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,14 +14,10 @@ import static io.restassured.RestAssured.*;                  // to be able to im
 import static org.junit.jupiter.api.Assertions.*;            // to be able to import static methods
 
 
-public class SpartanTestsWithPath {
+public class SpartanTestsWithPath extends SpartanTestBase {
 
 
-    // is executed for entire class not just before each scenario as Hooks did, saves baseURL inside this variable
-    @BeforeAll
-    public static void init() {
-        baseURI = "http://52.91.45.47:8000";
-    }
+
 
 
     /*
@@ -50,11 +47,12 @@ public class SpartanTestsWithPath {
         assertEquals(200, response.statusCode());
         assertEquals("application/json", response.contentType());
 
+
         // verify each json key has specific value
         System.out.println();
         System.out.println("response.path(\"id\").toString() = " + response.path("id").toString());
         System.out.println("response.path(\"name\").toString() = " + response.path("name").toString());
-        System.out.println("response.path(gender).toString() = " + response.path("gender").toString());
+        System.out.println("response.path(\"gender\").toString() = " + response.path("gender").toString());
         System.out.println("response.path(\"phone\").toString() = " + response.path("phone").toString());
 
         int id = response.path("id");
@@ -96,8 +94,6 @@ public class SpartanTestsWithPath {
         List<String> names = response.path("name");                 // store list of names in List of string
 
         System.out.println("names = " + names);
-
-
 
         for (String n : names) {
             System.out.println( n );

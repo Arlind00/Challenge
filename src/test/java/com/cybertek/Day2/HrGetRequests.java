@@ -51,7 +51,6 @@ public class HrGetRequests {
                 .get("/regions/2");                                  // endpoint
 
         // verify response code is 200
-
         assertEquals(200, response.statusCode());
 
         // verify content type is application/jason

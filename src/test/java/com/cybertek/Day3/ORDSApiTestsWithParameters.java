@@ -42,7 +42,7 @@ public class ORDSApiTestsWithParameters {
         assertEquals(200, response.statusCode());
         assertEquals("application/json", response.header("Content-Type"));      // checks for the value of specific header
         assertTrue(response.headers().hasHeaderWithName("\"Content-Type\""));       // checks if the specific header exists
-        assertTrue(response.body().asString().contains("United States of America"));
+        assertTrue(response.body().asString().contains("United States of America"));            // checks if the response body contains specific word
 
         response.prettyPrint();
     }

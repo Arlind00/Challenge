@@ -37,10 +37,10 @@ public class SpartanTestWithParameters {
     @Test
     public void test1() {
 
-        Response response = given().accept(ContentType.JSON)                                    // content type
+        Response response = given().accept(ContentType.JSON)                 // content type
                 .and().pathParam("id", 5)        // path parameter
                 .when()
-                .get("/api/spartans/{id}");                           // end URL, we can give ID value directly also
+                .get("/api/spartans/{id}");                            // end URL, we can give ID value directly also
 
 
         // verify response
@@ -101,7 +101,7 @@ public class SpartanTestWithParameters {
     @Test
     public void test3(){
 
-        Response response = given().log().all()                                                             // optional to se our request info
+        Response response = given().log().all()                                         // optional to se our request info
                 .accept(ContentType.JSON)
                 .and().queryParam("gender", "Female")      // search for gender= female
                 .and().queryParam("nameContains", "e")     // search for nameContains= e
