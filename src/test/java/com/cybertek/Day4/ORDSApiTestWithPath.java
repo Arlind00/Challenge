@@ -25,12 +25,12 @@ public class ORDSApiTestWithPath extends HRTestBase {
 
     @DisplayName("GET request to countries with Path mehtod")
     @Test
-    public void test1(){
+    public void test1() {
 
         Response response = given().accept(ContentType.JSON)
-                                    .and().queryParam("q", "{\"region_id\":2}")
-                                    .when()
-                                    .get("/countries");
+                .and().queryParam("q", "{\"region_id\":2}")
+                .when()
+                .get("/countries");
 
 
         assertEquals(200, response.statusCode());
@@ -57,6 +57,40 @@ public class ORDSApiTestWithPath extends HRTestBase {
         // get all country names
         List<String> countryNames = response.path("items.country_name");        // gets all country names
         System.out.println("countryNames = " + countryNames);
+
+        // assert all region ID's are equal to 2
+        List<Integer> allRegionID = response.path("items.region_id");           // gets all region_id
+
+        for (Integer regionID : allRegionID) {
+            System.out.println("regionID = " + regionID);
+            assertEquals(2, regionID);
+        }
+    }
+
+
+    @DisplayName("GET request to employees with Query IT_PROG")
+    @Test
+    public void test2() {
+
+        Response response = given().accept(ContentType.JSON)
+                .and().queryParam("q", "{\"job_id\": \"IT_PROG\"}")
+                .when().get("/employees");
+
+
+        assertEquals(200, response.statusCode());
+        assertEquals("application/json", response.header("Content-Type"));      // checks for the value of specific header
+        assertTrue(response.body().asString().contains("IT_PROG"));
+
+
+        // make sure we have only IT Programmer as job_iD
+        List<String> allJobIDs = response.path("items.job_id");
+
+        for (String jobID : allJobIDs) {
+            System.out.println("jobID = " + jobID);
+            assertEquals("IT_PROG", jobID);
+        }
+
+
     }
 
 
