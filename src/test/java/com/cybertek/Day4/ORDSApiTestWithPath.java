@@ -89,9 +89,36 @@ public class ORDSApiTestWithPath extends HRTestBase {
             System.out.println("jobID = " + jobID);
             assertEquals("IT_PROG", jobID);
         }
+    }
+
+
+    // print name of each IT-programmer
+
+    @DisplayName("GET request to employees with Query IT_PROG")
+    @Test
+    public void test3() {
+
+        Response response = given().accept(ContentType.JSON)
+                .and().queryParam("q", "{\"job_id\": \"IT_PROG\"}")
+                .when().get("/employees");
+
+
+        assertEquals(200, response.statusCode());
+        assertEquals("application/json", response.header("Content-Type"));      // checks for the value of specific header
+        assertTrue(response.body().asString().contains("IT_PROG"));
+
+
+        // make sure we have only IT Programmer as job_iD
+        List<String> namesOfProgrammers = response.path("items.first_name");
+
+        for (String name : namesOfProgrammers) {
+            System.out.println("name = " + name);
+        }
 
 
     }
+
+
 
 
 }
