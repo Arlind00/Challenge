@@ -60,7 +60,12 @@ public class ORDSApiWithJsonPath extends HRTestBase {
         System.out.println("employeesWhoMakeMoreThan10Thousand = " + employeesWhoMakeMoreThan10Thousand);
 
 
+        // get the max salary first_name
+        String nameOfMaxSalary = jsonPath.getString("items.max {it.salary}.first_name");
+        System.out.println("nameOfMaxSalary = " + nameOfMaxSalary);
     }
+
+
 
 
 }
