@@ -75,7 +75,7 @@ public class ORDSHamcrestTest extends HRTestBase {
 
 
         // assert firstnames order
-       // assertThat(jsonPath.getList("items.first_name"),containsInRelativeOrder("Alexander", "Bruce", "David", "Valli", "Diana"));    // checks order of the list
+        // assertThat(jsonPath.getList("items.first_name"),containsInRelativeOrder("Alexander", "Bruce", "David", "Valli", "Diana"));    // checks order of the list
 
     }
 
