@@ -57,9 +57,9 @@ public class HamcrestMatchersApiTest {
         given().accept(ContentType.JSON)
                 .and()
                 .log().all()
-                //.pathParam("id", 14104)
+                .pathParam("id", 14104)
                 .when()
-                .get("http://api.cybertektraining.com/teacher/14104")
+                .get("http://api.cybertektraining.com/teacher/{id}")
                 .then()
                 .statusCode(200)                                                            // response part
                 .and()
@@ -69,13 +69,30 @@ public class HamcrestMatchersApiTest {
                 .and()
                 .header("Date", notNullValue())                         // checks if the date is not null will be OK
                 .and().assertThat();
-                //.body("teacher[0].firstName", is("Verda"))
-                //.body("teacher[0].lastName", is("Parker"))
-                //.body("teacher[0].gender", equalTo("male"));
+        //.body("teacher[0].firstName", is("Verda"))
+        //.body("teacher[0].lastName", is("Parker"))
+        //.body("teacher[0].gender", equalTo("male"));
     }
 
 
+    @DisplayName("GET request to teacher/all and chaining")
+    @Test
+    public void teachersData() {
+
+        // verify Ellis,Robin,Curt
+        given().accept(ContentType.JSON)
+                .when()
+                .get("http://api.cybertektraining.com/teacher/all")
+                .then()
+                .statusCode(200)
+                .and()
+                .body("teachers.firstName", hasItems("Ellis", "Robin", "Curt"));
+    }
+
+
+
 }
+
 
 
 
