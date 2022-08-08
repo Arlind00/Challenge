@@ -93,7 +93,7 @@ public class SpartanGetRequests {
     @Test
     public void test3(){
 
-        Response response = RestAssured.when().get(baseUrl + "/api/hello");
+        Response response = RestAssured.given().get(baseUrl + "/api/hello");
 
         // verify status code is 200
         Assertions.assertEquals(200, response.statusCode());
@@ -116,3 +116,4 @@ public class SpartanGetRequests {
         Assertions.assertEquals( "Hello from Sparta", response.body().asString());
     }
 }
+

@@ -32,7 +32,8 @@ public class SpartanNegativeGetTest {
     @Test
     public void test1(){
 
-        Response response = given().accept(ContentType.XML).when().get("/api/spartans/10");
+        Response response = given().accept(ContentType.XML)
+                                    .when().get("/api/spartans/10");
 
         // verify status code
         assertEquals(406, response.statusCode());
