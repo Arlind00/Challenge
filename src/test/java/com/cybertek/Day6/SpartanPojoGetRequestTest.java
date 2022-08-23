@@ -108,6 +108,7 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
                 .extract().jsonPath().getList("items", Spartan.class);          // get the list from response body and put in Spartan.class
 
         System.out.println(spartanList.get(1).getName());
-
     }
+
+
 }
