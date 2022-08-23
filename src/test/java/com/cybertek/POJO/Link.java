@@ -1,34 +1,16 @@
 package com.cybertek.POJO;
 
-public class Link {
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter         // lombok annotation shortcut
+@Setter         // lombok annotation shortcut
+@ToString       // lombok annotation shortcut
+public class Link {     // we created this class for ref & href keys inside links array
 
     private String rel;
     private String href;
 
-
-    public String getRel() {
-        return rel;
-    }
-
-    public void setRel(String rel) {
-        this.rel = rel;
-    }
-
-    public String getHref() {
-        return href;
-    }
-
-    public void setHref(String href) {
-        this.href = href;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Link{" +
-                "rel='" + rel + '\'' +
-                ", href='" + href + '\'' +
-                '}';
-    }
 }
