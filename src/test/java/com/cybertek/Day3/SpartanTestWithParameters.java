@@ -21,7 +21,7 @@ public class SpartanTestWithParameters {
     // is executed for entire class not just before each scenario as Hooks did, saves baseURL inside this variable
     @BeforeAll
     public static void init() {
-        baseURI = "http://52.91.45.47:8000";                        // base URL
+        baseURI = "http://54.173.186.7:8000";                        // base URL
     }
 
 
@@ -38,7 +38,7 @@ public class SpartanTestWithParameters {
     public void test1() {
 
         Response response = given().accept(ContentType.JSON)                 // content type
-                .and().pathParam("id", 5)        // path parameter
+                .and().pathParam("id", 5)          // path parameter
                 .when()
                 .get("/api/spartans/{id}");                            // end URL, we can give ID value directly also
 

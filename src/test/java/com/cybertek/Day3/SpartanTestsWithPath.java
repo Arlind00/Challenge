@@ -96,7 +96,7 @@ public class SpartanTestsWithPath extends SpartanTestBase {
         System.out.println("names = " + names);
 
         for (String n : names) {
-            System.out.println( n );
+            System.out.print( n +", " );
         }
 
 

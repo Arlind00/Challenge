@@ -43,7 +43,7 @@ public class ORDSHamcrestTest extends HRTestBase {
                 .statusCode(200)
                 .body("items.job_id", everyItem(equalTo("IT_PROG")))            // from everyItem in body selects only IT_PROG's
                 //.body("items.first_name", containsInRelativeOrder("Alexander", "Bruce", "David", "Valli", "Diana"));              // checks body according the order we write the list
-                .body("items.first_name", containsInRelativeOrder("Alexander", "Bruce", "David", "Valli", "Diana"))    // checks body without order
+                .body("items.first_name", containsInAnyOrder("Alexander", "Bruce", "David", "Valli", "Diana"))    // checks body without order
                 .body("items.first_name", equalTo(names));           // equality of lists assertion (actual and expected)
     }
 

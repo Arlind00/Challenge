@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;            // to be able to im
 public class HrGetRequests {
 
 
-    // is executed for entire class not just before each scenario as Hooks did, saves baseURL inside this variable
-    @BeforeAll
+
+    @BeforeAll                          // is executed for entire class not just before each scenario as Hooks did, saves baseURL inside this variable
     public static void init() {
-         baseURI = "http://52.91.45.47:1000/ords/hr";                              // base URL
+         baseURI = "http://54.173.186.7:1000/ords/hr";                              // base URL
     }
 
 
@@ -29,7 +29,6 @@ public class HrGetRequests {
 
         Response response = given().get("/regions");                          // endPoint
         System.out.println("response.statusCode() = " + response.statusCode());
-
     }
 
 
@@ -58,10 +57,12 @@ public class HrGetRequests {
         // verify content type is application/jason
         assertEquals("application/json", response.contentType());
 
-        response.prettyPrint();
+
 
         // verify body contains Americas
         assertEquals(response.body().asString().contains("Americas"), true);         // boolean
+
+        response.prettyPrint();
     }
 
 

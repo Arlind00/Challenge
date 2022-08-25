@@ -19,11 +19,11 @@ public class ORDSApiTestWithPath extends HRTestBase {
 
     @BeforeAll
     public static void init() {
-        baseURI = "http://52.91.45.47:1000/ords/hr";
+        baseURI = "http://54.173.186.7:1000/ords/hr";
     }
 
 
-    @DisplayName("GET request to countries with Path mehtod")
+    @DisplayName("GET request to countries with Path method")
     @Test
     public void test1() {
 

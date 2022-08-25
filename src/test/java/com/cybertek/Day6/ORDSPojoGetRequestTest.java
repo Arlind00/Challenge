@@ -73,6 +73,7 @@ public class ORDSPojoGetRequestTest extends HRTestBase {
             regionIds.add(region.getRId());
             regionNames.add(region.getRegion_name());
         }
+
         System.out.println(regionIds);
         System.out.println(regionNames);
 

@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 public class SpartanGetRequests {
 
 
-    String baseUrl = "http://52.91.45.47:8000";
+    String baseUrl = "http://54.173.186.7:8000";
 
 
     /*
@@ -29,7 +29,7 @@ public class SpartanGetRequests {
     public void test1() {
         Response response = given().accept(ContentType.JSON)                            // giving the Header type (we store everything in response variable)
                                     .when()                                             // optional to use
-                                    .get(baseUrl + "/api/spartans");              // concatenating base URL + endpoint
+                                    .get(baseUrl + "/api/spartans");               // concatenating base URL + endpoint
 
 
         // printing status code from response object
@@ -93,7 +93,7 @@ public class SpartanGetRequests {
     @Test
     public void test3(){
 
-        Response response = RestAssured.given().get(baseUrl + "/api/hello");
+        Response response = given().get(baseUrl + "/api/hello");
 
         // verify status code is 200
         Assertions.assertEquals(200, response.statusCode());
